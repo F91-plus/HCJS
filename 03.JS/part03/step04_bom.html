@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    
+    <script>
+        // BOM : Browser Object Model
+        // window, location, document, history, screen, navigator
+        // window
+        // document.write(window.self);
+
+        // location
+        // 3초뒤 설정한 코드대로 이동한다.
+        // setTimeout(() => {
+        //     location.href = "https://naver.com"
+        // }, 3000)
+
+        // location.reload(); // 화면 재구성
+
+        // history
+        // document.write(history.length); // 페이지 이동 기록 개수 출력
+        // history.go(1);       // 기록중 1로 이동
+        // history.back();
+
+        // navigator
+        const moblie_keys = ['iPhone', 'iPan', 'Androig', 'G-Tab'];
+        document.write(navigator.language);
+        document.write(navigator.userAgent); // 모바일인지 PC인지 구분함
+
+        for(let i in moblie_keys) {
+            if(navigator.userAgent.match(moblie_keys[i])) {
+                console.log(moblie_keys[i]);
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            position: relative;
+        }
+        h1 {
+            font-family: sans-serif;
+            font-size: 10rem;
+            font-weight: bold;
+            color:#FFF;
+            position: absolute;
+            text-align  : center;
+            top: 35vh;
+            right: 0;
+            left: 0;
+            z-index: 2;
+        }
+        .bg-video {
+            object-fit: cover;
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>UNIVERSE</h1>
+        <video class="bg-video" src="https://isorepublic.com/wp-content/uploads/2019/10/iso-republic-milky-way-flying.mp4" autoplay loop></video>
+    </div>
+</body>
+</html>

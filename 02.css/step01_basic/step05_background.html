@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step05_background.html</title>
+    <style>
+        p {
+            background-color: rgb(172, 172, 85);
+        }
+        div {
+            background-image: url(https://cdn.pixabay.com/photo/2022/07/07/07/24/clouds-7306684__340.jpg);
+            /* width: 100vx;
+            height: 100vh; */
+            /* repeat : no-repeat, repeat-x, y*/
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        section {
+            height: 300px;
+            border: 2px dashed black;
+        }
+
+        .section2{
+            background-image: url(https://www.starbucks.co.kr/common/img/main/fav_prod_bg_new.jpg);
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-attachment: fixed;
+        }
+
+        .pic {
+            width: 400px;
+            height: 300px;
+            border: 2px solid greenyellow;
+            background-size: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- bg color -->
+    <p>배경색상 적용</p>
+
+    <!-- bg img -->
+    <!-- <div></div> -->
+
+    <!-- bg position -->
+    <!-- scroll : 이미지가 같이 스크롤 됨
+         fixed : viewport에 고정되어 스크롤 되지 않음 -->
+    <section class="section1"></section>
+    <section class="section2"></section>
+    <section class="section3"></section>
+    <section class="section4"></section>
+    <section class="section5"></section>
+
+    <!-- size  -->
+    <!-- auto : 기본크기
+         cover: 배경 이미지 크기의 비율 유지, 더 넓은 너비에 초점
+         contain : 배경 이미지 크기의 비율 유지, 더 짧은 너비에 초점
+    -->
+    <div class="pic"></div>
+</body>
+</html>

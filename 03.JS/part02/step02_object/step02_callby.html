@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step02_callby.html</title>
+</head>
+<body>
+    <script>
+        // 값에 의한 전달 = call by value
+        let height = 175;
+        let number = height;
+        console.log(height);    // 175
+        console.log(number);    // 175
+        //비교
+        console.log(height === number);
+
+        height = 183;
+        console.log(height);    // 183
+        console.log(number);    // 175
+        console.log(height === number);
+
+        // (객체타입, 참조타입)
+        // 참조에 의한 전달 call by reference
+        let person = {
+            name: "it"
+        }
+        let copyPerson = person;
+
+        console.log(person);
+        console.log(copyPerson);
+        console.log(person  === copyPerson);
+
+        // 실제 내용 + 타입
+        
+        // 복사한 객체의 정보를 변경
+        // 그럼에도 같은 주소값을 참조 하고 있기 때문에 person 역시 변경된 내용을 출력하게 된다.
+        copyPerson.name = "dev";
+        console.log(copyPerson);
+        console.log(person);
+
+        let nums = [1,2,3,4,5];
+        console.log(nums);
+
+        // 얕은 복사
+        let numbers = nums;
+        numbers[2] = 30;
+
+        console.log(numbers);
+        console.log(nums);
+
+        console.log("=============");
+
+        // 깊은 복사
+        let deepNumbers = [];
+        for(let  i=0; i<nums.length; i++) {
+            deepNumbers[i] = nums[i];
+        }
+
+        console.log(deepNumbers);
+        deepNumbers[2] = 3;
+        console.log(deepNumbers);
+        console.log(nums);
+        
+        // deepNumber2 깊은복사 : JSON
+        let deepNumbers2 = JSON.parse(JSON.stringify(nums));
+        console.log("---깊은복사 후---")
+        console.log(nums);
+        console.log(deepNumbers2);
+        deepNumbers2[2] = 3;
+
+        console.log("---깊은복사 후 값을 변경---")
+        console.log(nums);
+        console.log(deepNumbers2);
+
+        // deepNumber3 깊은복사 : filter
+        let deepNumber3 = nums.filter(() => true);
+        console.log(deepNumber3);
+        deepNumber3[2] = 3;
+
+        console.log(nums)
+        console.log(deepNumber3);
+
+        // nums?
+        console.log(nums);
+
+        // ex2 : 객체 복사
+        let suv = { color: "black", cc: 3000 };
+        let dev = { name: "it", age: 24, car: suv };
+
+        let devops = dev;
+
+        // console.log(dev);
+        // console.log(devops);
+        // console.log(dev === devops);
+
+        // Object.is(obj1, obj2);
+        // obj1, obj2 두 객체가 같은지 그 여부를 판단
+
+        // console.log(Object.is(dev, devops)); // true
+        // console.log(Object.is(dev.car, devops.car));
+
+        // 깊은 복사 : Object.assign(newObj, oldObj);
+        // newObj에 oldObj를 복사하는 기능(--> 새로운 객체 만들어짐)
+        let devops2 = Object.assign({}, dev);
+        console.log(dev);
+        console.log(devops2);
+        console.log(Object.is(dev, devops2)); // false
+        console.log(Object.is(dev.car, devops2.car)); // false x --> true
+
+        // 깊은 복사를 했다 할지라도 객체 내부의 또 다른 객체는 깊은 복사가 되지 않았다!
+        // 이를 해결하기 위해서는?? (하위객체도 깊은 복사를 하려면??)
+        // JSON
+        // stringify(obj): obj 객체의 모든 정보를 문자열로 반환
+            // let devops3 = JSON.stringify(dev);
+            // console.log(devops3);
+        // parse(obj) : obj 문자열을 활용하여 새로운 객체로 생성
+        let devops3 = JSON.parse(JSON.stringify(dev));
+        console.log(devops3);
+
+        // dev vs devops3
+        console.log(Object.is(dev, devops3)); // false
+        console.log(Object.is(dev.car, devops3.car)); // false
+        // 111라인을 통해서 객체 내부의 또 다른 객체도 완벽하게 깊은 복사가 되었다는 것을 확인함!
+
+    </script>
+</body>
+</html>

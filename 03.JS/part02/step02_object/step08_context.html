@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>context</title>
+</head>
+<body>
+    <script>
+        // Execution Context
+        // 실행 컨텍스트
+        // : 실행할 코드에 필요한 환경 정보(변수(식별자), 변수값(식별자에 바인딩된 값), ...)들을 저장한 객체
+        // 1) 생성 단계
+        // : 실행 컨텍스트가 만들어 지는 단계, 선언문만 들어감
+        // 2) 실행 단계
+        // : 선언문을 제외한 나머지 코드에 대한 부분들이 순차적으로 실행(record가 업데이터, 다른 값으 참조)
+
+        // Record : 식별자, 식별자에 바인딩된 값
+        // let과 const 에는 호이스팅이 일어나지 않음 : 일시적 사각지대가 발생
+        // 선언 이전에는 식별자를 참조할 수 없는 영역이 생긴다.
+
+        // Outer : 외부환경 참조
+
+        // Global Variable
+        let tv = false;
+        function moveTo2F() {
+            let tv = true;
+            function moveTo3F() {
+                let cat = "navi";
+                console.log(cat);
+            }
+            console.log(tv);
+            moveTo3F();
+        }
+        moveTo2F();
+
+        // 클로저
+        const x = 1;
+        function outer() {
+            const x = 10; // 자유변수
+            const inner = function () {
+                console.log(x);
+            };
+            return inner;
+        }
+
+        const result = outer();
+        result(); // 10
+        // Call Stack에서 함수는 실행 된 후,
+        // 실행 컨텍스트 자체는 사라지게 됨
+        // 단, 내부에 있던 렉시컬 환경(레코드, outer)는
+        // context와 상관없이 엔진 내부에 존재함
+        // 따라서, Call Stack에서 사라진 함수의
+        // 식별자 (변수)도 렉시컬 환경이 살아있는 한
+        // 다른 함수가 참조 할 수 있음
+
+        // 렉시컬 스코프(환경) (정적 스코프)
+        const a = 10;
+        function lexical1() {
+            const a = 20;
+            lexical2();
+        }
+        function lexical2() {
+            console.log(a);
+        }
+        lexical1(); // 10
+        lexical2(); // 10
+        // ** 렉시컬 스코프는 함수가 호출된 시점에서의 값을
+        // 참조하는 것이 아니라 생성 당시의 환경 값을 참조한다.
+
+        // 클로저의 활용
+
+        /*
+            let num = 0;
+            const increase = function() {
+                //let num=0; var2지역변수 : 호출마다 초기화
+                return ++num;
+            }
+            console.log(increase());    // 1
+            //num=10;   var1전역변수(문제점 : 값이 제대로 보전되지 않음)
+            console.log(increase());    // 2
+            console.log(increase());    // 3
+        */
+        // var3 : 클로저를 이용한 해결방법 (이전의 상태는 유지하되, increase 기능은 동작)
+        const increase = (function() {
+            let num = 0;
+            return function() {
+                return ++num;
+            };
+        }()); // 즉시 실행함수
+        console.log(increase());
+        console.log(increase());
+        console.log(increase());
+
+        // 감수 decrease
+        const decrease = (function() {
+            let num = 0;
+            return function() {
+                return --num;
+            };
+        }()); // 즉시 실행함수
+        console.log(decrease());
+        console.log(decrease());
+        console.log(decrease());
+
+        // 증가함수와 감소함수
+        const calculator = (function () {
+            let num =0;
+            return {
+                print() {
+                    return 'test'
+                },
+                increase() {
+                    return ++num;
+                },
+                decrease() {
+                    return --num;
+                }
+            };
+        }());
+        console.log(calculator.print())
+        console.log(calculator.increase());
+        console.log(calculator.increase());
+        console.log(calculator.decrease());
+        
+        // 추가 기능 구현
+        // num은 음수를 출력하지 않게 출력, 0이하로 출력하지 않음
+        const calculator2 = (function() {
+            // 공통의 변수
+            let num = 0;
+            return {
+                increase() {
+                    return ++num;
+                },
+                decrease() {
+                    // ver1
+                    // if(num > 0){
+                    //     return --num;
+                    // }else {
+                    //     return 0;
+                    // }
+
+                    // ver2 : 삼항연산자
+                    return num > 0 ? --num : 0;
+                }
+            }
+        }());
+        console.log(calculator.increase());
+        console.log(calculator.increase());
+        console.log(calculator2.decrease());
+        console.log(calculator2.decrease());
+        console.log(calculator2.decrease());
+
+        // 삼항 연산자
+        // 조건 ? x : y; 
+        // 조건이 참이면 결과가 x, 거짓이면 y
+        let age = 24;
+        if(age > 40) {
+            console.log('나이가 짱 많음');
+            console.log('나이가 짱 많음');
+            console.log('나이가 짱 많음');
+        }else {
+            console.log('나이가 적음');
+            console.log('나이가 적음');
+            console.log('나이가 적음');
+        }
+        
+        age > 40 ? console.log('나이가 짱 많음') : console.log('나이가 적음');
+        // var1
+        console.log(age > 40 ? '많음' : '적음')
+        let resultAge = age > 40 ? '많음' : '적음';
+        console.log(resultAge);
+        
+        // var2
+        age > 40 ? 
+            function(){console.log('나이가 짱 많음')}()
+        : 
+            function(){console.log('나이가 적음')}()
+
+        // var3
+        age > 40 ?
+            (console.log('나이가 짱 많음'),console.log('나이가 짱 많음'))
+        :
+            (console.log('나이가 짱 많음'),console.log('나이가 짱 많음'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step02_loop.html</title>
+</head>
+<body>
+    <script>
+        // while
+        // 주어진 조건이 참이라면 수행코드가 무한히 반복되도록 지정
+        let num = 1;
+        while(num <= 10) {
+            console.log(num);
+            num++;
+        }
+
+        // for : 일반적으로 횟수가 정해져 있는 반복문
+        for(let i = 1; i<=10; i++) {
+            console.log(`for`+ i);
+        }
+
+        // for ~ of
+        const nums = [1,2,3,4,5];
+        for(let j of nums) {
+            console.log(j);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide {
+            display: none;
+        }
+        .invalid {
+            border: 2px solid red;
+        }
+        #invalid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menu</h1>
+    <div id="sub">설명</div>
+
+    <hr>
+
+    <h3>서비스</h3>
+    <!-- step01 인라인방식 : onclick="showcontent()" -->
+    <button id="check" class="tab" name="checkName">조회</button>
+    <button id="transfer" class="tab">이체</button>
+    <ul class="checkService hide">
+    <li>계좌조회</li>
+    <li>수표조회</li>
+    <li>오픈뱅킹</li>
+    </ul>
+
+    <div id="content"></div>
+    <div id="content2"></div>
+
+    <h3>이메일</h3>
+    <input type="email" name="email" id="email">
+    <div id="invalid"></div>
+    <div id="output"></div>
+
+    <hr>
+    <h3>대문자만 입력</h3>
+    <div>
+        <!-- 연결시켜줌 coupon -->
+        <label for="coupon">쿠폰입력</label> 
+        <input type="text" id="coupon">
+    </div>
+
+    <script>
+        // keybord
+        const coupon = document.getElementById('coupon');
+        coupon.addEventListener('keyup', () => {
+            // console.log(typeof(coupon.value)); // 쿠폰의 값을 확인 - string
+            console.log(coupon.value.toUpperCase());    
+            coupon.value = coupon.value.toUpperCase();// 소문자를 대문자로 반환
+        })
+
+        // mouse 및 기본 이벤트 사용
+        const sub = document.getElementById('sub');
+        const check = document.querySelector('#check');
+
+        // step01 인라인 방식 : HTML태그 속성 내부에 지정
+        // 조회 버튼 "클릭" -> div#content 글자 출력
+        function showcontent() {
+            // console.log('연결확인');
+            document.querySelector('#content').innerHTML = "조회 서비스";
+        }
+
+        // step02 프로퍼티 방식
+        // // 한계 : 같은 이벤트는 중복 등록 불가능
+        // check.onclick = function showcontent() {
+        //     document.querySelector('#content').innerHTML = "조회 서비스";
+        // }
+
+        // check.onclick = function showcontent2() {
+        //     document.querySelector('#content2').innerHTML = "조회 서비스2";
+        // }
+
+        // check.onmouseover = function test() {
+        //     console.log("test");
+        // }
+
+        // step03 addEventListener
+        // 같은 기능 등록 가능
+        check.addEventListener('click', () => {
+            document.querySelector('#content').innerHTML = "조회 서비스";
+        });
+        check.addEventListener('click', () => {
+            document.querySelector('#content2').innerHTML = "조회 서비스2";
+        });
+
+        // 이벤트
+        // 종류 - Mouse
+        // 옵션 - click, dblclick, mouseover, mouseup, mousedown...
+        // ex mousedown
+        check.addEventListener('mousedown', function mouseDown() {
+            console.log("mousedown")
+        });
+        // ex) mouseover
+        // checkService -> 사라졌다가 보여지도록 지정
+        // 보여지는 기능
+        const checkService = document.querySelector('.checkService');
+        check.addEventListener('mouseover', function () {
+            // console.log(checkService.classList);
+            checkService.classList.remove('hide');
+        });
+        // 사라지는 기능 (직접 해보기)
+        check.addEventListener('mouseout', function () {
+            // console.log("떠남");
+            checkService.classList.add('hide');
+        })
+
+        // Focus
+        // 이메일 입력값 --> @ 포함이 되면 유효한 이메일
+        const email = document.getElementById('email');
+        const invalid = document.getElementById('invalid');
+        const output = document.getElementById('output');
+        // focus
+        email.addEventListener('focus', function() {
+            email.style.background = 'aqua';
+            // input tag가 지정이 되어있음
+            if(this.classList.contains('invalid')) {
+                email.classList.remove('invalid');
+                invalid.innerHTML = '';
+            }
+        });
+
+        // blur
+        email.addEventListener('blur', function () {
+            if(!email.value.includes('@')) {
+                email.classList.add('invalid');
+                invalid.innerHTML = '올바른 이메일을 입력하세요';
+                output.innerHTML = '';
+            }
+            email.style.background = '';
+            output.innerHTML = '';
+        });
+
+
+    </script>
+
+    <!-- 
+        원론적인 내용 정리
+        - 클로져 정리
+        - dom
+        - dom_event
+    -->
+</body>
+</html>

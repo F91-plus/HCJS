@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step03_flex.html</title>
+    <style>
+        .container {
+            display: flex;
+            border: 2px dashed red;
+
+            flex-direction: row;
+
+            flex-wrap: nowrap;
+
+            justify-content: space-evenly;
+
+            /* height: 400px;
+            align-content: center; */
+        }
+        .container .item {
+            width: 100px;
+            height: 100px;
+            border: 2px solid;
+
+            /* item을 중앙으로, item 자체가 container가 된다 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 아이템 */
+        .item:nth-child(3) {
+            font-size: 40px;
+            order: 0;
+        }
+
+        /* flex-grow */
+        .item1 {
+            /* flex-grow: 1; */
+            flex-shrink: 1;
+        }
+        .item2 {
+            flex-grow: 2;
+        }
+        .item3 {
+            flex-grow: 1;
+        }
+
+        /* flex-basis */
+        .container .item-basis {
+            height: 100px;
+            background: gold;
+            border: 3px dashed darkblue;
+            flex-grow: 1;
+            flex-basis: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- flex -->
+    <!-- 컨테이너 -->
+    <!-- 1. inline-flex vs flex -->
+    <div class="container">
+        <div class="item">item1</div>
+        <div class="item">item2</div>
+        <div class="item">item3</div>
+        <div class="item">item4</div>
+        <div class="item">item5</div>
+    </div>
+
+    <!-- 2. flex-direction -->
+    <!-- 주축, 교차축 -->
+    <!-- row 일때  주축은 수평축, 교차축은 수직축 -->
+    <!-- main-start(flex-start) / end -->
+    <!-- coress-start(flex-start) / end -->
+
+    <!-- 3. flex-wrap 줄넘김 처리(컨테이너가 아이템을 담을 공간이 없을 때 줄 바꿈 방식)-->
+    <!-- nowrap -->
+    <!-- wrap : 여러줄로 하나의 컨테이너로 묶음(줄 바꿈이 존재) -->
+
+    <!-- 4. justify-content 주축 정렬방식 -->
+
+    <!-- 5. align-content 수직축 정렬방식 -->
+    <!-- 6. align-item -->
+
+    <!-- 아이템 -->
+    <!-- 7. order / 기본값은 0 -->
+
+    <!-- 8. flex-grow : 증가 너비 비율 설정 text 이후 남은 여백을 똑같이 나눔-->
+    <!-- 9. flex-shrink : 감소 너비 비율 설정 -->
+    <!-- 가변적인 크기를 갖는 요소에 적용 -->
+    <br><br><br><br><br><br><br><br><br><br>
+    <div class="container">
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+    </div>
+    
+    <!-- 10. flex-basis : 공간 배분전 기본 너비 설정(auto), 단위 -->
+    <br><br><br><br><br><br><br><br><br><br>
+    <div class="container">
+        <div class="item-basis">item1</div>
+        <div class="item-basis">2</div>
+        <div class="item-basis">item333333</div>
+    </div>
+</body>
+</html>

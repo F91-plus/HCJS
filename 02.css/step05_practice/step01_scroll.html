@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step01_scroll</title>
+    <link rel="stylesheet" href="/css/Reset.css">
+    <style>
+        body {
+            font-size: 3rem;
+            text-align: center;
+        }
+        .container {
+            height: 100vh;
+            overflow: auto;
+            scroll-snap-type: y proximity;
+        }
+        .area {
+            /* 스크롤 후 멈춘 화면중 가장 가까운 구역의 시작점으로 이동  */
+            scroll-snap-align: start;
+            height: 100vh;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 세로 */
+            flex-direction: column;
+        }
+        .title {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+        p {
+            font-size: 1rem;
+        }
+        .area:nth-child(2n-1){
+            background: aqua;
+        }
+        .area:nth-child(2n){
+            background: greenyellow ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="area">
+            <h1 class="title">Skills</h1>
+            <p>Study Lectures</p>
+        </section>
+        <section class="area">
+            <h1 class="title">HTML</h1>
+            <p>markup language</p>
+        </section>
+        <section class="area">
+            <h1 class="title">CSS</h1>
+            <p>style sheet</p>
+        </section>
+    </div>
+</body>
+</html>

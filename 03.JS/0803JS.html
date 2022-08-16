@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1번
+        var nums = [100, 200, 300, 400, 500];
+        console.log(nums);
+
+        // for(let i=0; i<nums.length; i++) {
+        //     if(nums[i] === 400 || nums[i] ===500)
+        //     nums.splice(i,1);
+        //     i--;
+        // }
+        // console.log(nums);
+
+        // filter?
+        // console.log(nums.filter(num => (num%3) === 0));
+        const filteredArray = 
+            nums.filter(num => num !== 400).filter(num => num !==500);
+        console.log(filteredArray);
+
+        // reduce? = 숫자는 0, 배열은 [] 으로 초기값 설정
+        // 축적값, 현재 값 
+        // return 을 사용한다, 함수..
+        const resultArray = nums.reduce((accumulator, currnetValue) => {
+            if(currnetValue !== 400)
+            if(currnetValue !== 500)
+
+            accumulator.push(currnetValue);
+            return accumulator;
+        }, []);
+        console.log(resultArray);
+
+
+
+        // 2번
+        // var arr = [200, 100, 300];
+        // arr.splice(2, 0, 10000);
+        // console.log(arr);
+
+        // 3번
+        // let date = new Date();
+
+        // 4번
+        //planet = ["수성", "금성", "지구", "화성", "목성", "토성", "천왕성", "해왕성"];
+        // let inputnumber =  parseInt(prompt(''));
+        // console.log(`입력 ${inputnumber} \n출력 : ${planet[inputnumber]}`);
+        
+        // 5번
+        // let inputnumber2 =  parseInt(prompt(''));
+        // switch (inputnumber2%3) {
+        //     case (0):
+        //         console.log(`입력 : ${inputnumber2} \n 출력 : 짝`);
+        //     break;
+        //     default:
+        //         console.log(`입력 : ${inputnumber2} \n 출력 : ${inputnumber2}`);
+        //     break;
+        // }
+
+        // 6번
+        // let input3 = prompt();
+        
+        
+
+        // // 7번
+        // const planet = {
+        //     수성: "Mercury"
+        // }
+        // const planetName = promt("검색하고자 하는 행성의 이름을 입력하세요");
+        // alert(planet[planetName]);
+
+        // 8번
+        // const word = "JavaScript";
+        // for(let i=0; i<word.length-1; i++) {
+        //     console.log(word[i], word[i+1]);
+        // }
+
+        // 9번
+        // function checkUppercase(alpha){
+        //     if(alpha === alpha.toUpperCase()) {
+        //         console.log("YES");
+        //     } else {
+        //         console.log("NO");
+        //     }
+        // }
+        // checkUppercase('a');
+
+        // 10번
+        // const students =['a','b','c'];
+        // students.sort(); // 오름차순
+        // students.reverse(); // 내림차순
+        // for(let key in students) {
+        //     console.log(`번호: ${parseInt(key)+1}, 이름: ${students[key]}`);
+        // }
+
+        // 11번
+        const longWord = "복잡한 세상 편하게 살자";
+        
+        let result11 = '';
+        for(let j of longWord.split(' ')) {
+            result11 += j[0];
+        }
+        console.log(result11);
+    </script>
+</body>
+</html>

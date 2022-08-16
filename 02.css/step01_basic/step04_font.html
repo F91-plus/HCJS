@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step04_font.html</title>
+    <style>
+        /* font-weight 400(default)~900*/
+        p {
+            font-weight: bold;
+        }
+        /* font-size : 단위 - (16)px, cm, em, %, ... */
+        div {
+            font-size: 16px;
+        }
+
+        /* font-fmaily */
+        .serif {
+            font-family: serif;
+        }
+        .monospace {
+            font-family: monospace;
+        }
+
+        /* font-size */
+        /* 
+            1.절대적 크기 : px, cm, ...
+            2.상대적 크기 : %, em, rem, ...
+        */
+        html{
+            font-size: 10px;
+        }
+        body * {
+            border: 1px solid black;
+        }
+        .container {
+            width: 200px;
+            font-size: 10px;
+        }
+
+        .parent {
+            /* % 부모 요소로 영향을 받음 */
+            /* width: 50%; */
+
+            /* em 부모를 기준으로 font-size 10px 상속받은 것과 같음 */
+            width: 10em;
+            font-size: 1em;
+        }
+
+        .child {
+            /* width: 1em; */
+
+            /* 5*16 = 80px rem 루트(html)로부터 받아옴*/
+            font-size: 5rem;
+            
+        }
+        /* v : view(viewport), h(height), w(width) */
+        .container2 {
+            height: 50vh;
+            width: 50vw;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        폰트 두께입니다.
+    </p>
+
+    <div>폰트 사이즈입니다.</div>
+
+    <hr>
+    <h1>단위 디테일</h1>
+    <!-- 단위 디테일 -->
+    <div class="container">컨테이너
+        <div class="parent">부모
+            <div class="child">1</div>
+            <div class="child">2</div>
+        </div>
+    </div>
+    <hr>
+    <h1>컨테이너 2</h1>
+    <div class="container2"></div>
+    <hr>
+
+    <h1>글 꼴</h1>
+    <!-- font-family : [글꼴 후보 1, 2, 3, 4, ...] -->
+    <!-- serif : 바탕체
+         sans-serif : 고딕체
+         monospace : 가로폭 동등 고정너비 계열
+         cursive : 필기체
+         fantasy : 장식 (재미표현) 계열 -->
+    <div class="serif">Hello, CSS</div>
+    <div class="sans-serif">Hello, CSS</div>
+    <div class="monospace">Hello, CSS</div>
+    <div class="cursive">Hello, CSS</div>
+</body>
+</html>

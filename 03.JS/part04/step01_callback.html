@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback</title>
+</head>
+<body>
+
+    <script>
+        // CallBack 함수
+        // 다른 함수의 파라미터로 넘겨주는 함수
+/*        
+        function testA(callback) {
+            callback();
+        }
+
+        function testB() {
+            console.log("callback");
+        }
+        testA(testB);
+*/
+        // testA(testB()); // error
+        // 다른 값으로 인자로 넘겨줄때에는 () 하면 안된다.
+
+        // 동기 vs 비동기
+        // 1. 동기 Synchronous : 요청 결과 응답 후, 다른 동작이 실행되는 방식
+        // [1,2,3].forEach((num) => {
+        //     console.log(num);
+        // });
+
+        // 2. 비동기 Ansynchronous : 요청 결과 응답과는 별개로 다음 동작이 실행되는 방식
+        // [1,2,3].forEach((num) => {
+        //     setTimeout(() => {
+        //         console.log(num);
+        //     }, 3000)
+        // });
+        // 배열.forEach(callbackFn {code}, resetnumber)
+
+        // console.log("============");
+        // console.log(1); // 동기
+        // setTimeout(() => {console.log(2);}, 0);  // 비동기
+        // console.log(3); // 동기
+        // 0초를 주어도 132로 출력된다.
+        // 설명 : https://miro.medium.com/max/1600/1*iHhUyO4DliDwa6x_cO5E3A.gif
+
+        // 스레도와 비동기의 관계
+        // JavaScript는 단일스레드 지만 멀티 스레드처럼 동작한다.
+        // web api에서 제공하는 queue 영역 때문에 멀티 스레드처럼 동작한다.
+
+// 비동기 문제를 해결하기 위해서 콜백 함수를 사용한다.
+
+        // 콜백 1
+        // function func() {
+        //     console.log(1); // 동기
+        //     setTimeout(() => {console.log(2);}, 0);  // 비동기
+        //     console.log(3); // 동기
+        // }
+        // func(); // 132
+        // 123 으로 출력할려면?
+
+        // 콜백 2 -> 콜백 지옥(가독성 떨어짐)
+        // function func2() {
+        //     setTimeout(() => {
+        //         console.log(1);
+        //         setTimeout(() => {
+        //             console.log(2);
+        //             setTimeout(() => {
+        //                 console.log(3);
+        //             },0)
+        //         }, 0);
+        //     }, 0);
+        // }
+        // func2();
+/*
+        // 콜백 3(해결) -> Promise
+        // 1. 상태 : pending -> fulfilled(정상적인 기능 수행 완료), rejected
+        // 2. 생산자(데이터 가져옴) - 소비자(가져온 데이터 사용, then)
+        const promise = new Promise((resolve, reject) => {
+            // let data='data';
+            // console.log(1);
+            // // resolve();
+            // resolve(data);
+            // reject(); // resolve 가 정상적으로 실행하지 않았을 경우 실행
+        })
+        .then((v) => {console.log(v)}) //
+        // console.log(promise) // 프로미스 객체 (실제 정상기능이 수행된 상태의 데이터가 담겨 있는 객체)
+        .then(() => {
+            console.log(2);
+            // return new Promise((resolve, reject) => {
+            //     setTimeout(() => {
+            //         console.log(2);
+            //         resolve();
+            //     }, 0);
+            // });
+        })
+        .then(() => {
+            console.log(3);
+        })
+        .then(() => {
+            console.log(4);
+        });
+
+        const promise2 = new Promise((resolve2, reject2) => {
+            setTimeout(() => {
+                console.log('promise2');
+                // resolve();
+                reject2();
+            }, 2000);
+        })
+        // console.log(promise2);
+*/
+/*
+        function usePromise() {
+            return new Promise((resolve2, reject2) => {
+                
+            })
+        }
+        usePromise();
+
+        promise2
+            .then(v => {console.log(v)})
+            .then(() => {console.log(1)})
+            .then(() => {console.log(2)})
+            .catch(err => {console.log('errrrrrrrrrrr')})
+            .finally(() => {console.log('finally')})
+*/
+        // 에러 처리
+        // try ~ catch
+        // try {
+        //     // 비동기 함수
+        //     setTimeout(() => {
+        //         noSuchElement;
+        //     }, 1000);
+        // } catch() {
+        //     console.log("error");
+        //     error
+        // } finally {
+        //     console.log("에러실행이 안되요..");
+        //     console.log("무조건 실행 되는 코드 블럭");
+        // }
+
+        // ex
+        // function chainMethod() {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             resolve(3);
+        //         }, 1000);
+        //     });
+        // }
+        // chainMethod()   // resolve의 3 값이 들어감
+        //     .then((num) => num*2) // 3 * 2 = 6
+        //     .then((num) => num*3) // 6 * 3 = 18
+        //     .then((num2) => num2*3) // 18 * 3 = 54
+        //     .then((num) => console.log(num)) // = 54
+        //     .then((num2) => console.log(num2)) // = undefined
+
+console.log('---콜백 함수와 비동기 (추가 설명)---');
+// 콜백 함수와 비동기 관계 정리!!!
+// function fetchData(studentId) {
+//     const student = {
+//         id: studentId 
+//     };
+//     return student;
+// }
+// const student1 = fetchData(1);
+// console.log(student1);
+// // 예상 결과
+// {id: 1}
+// 실제 결과 = undefinded
+
+
+// 콜백 함수로 변경하면???
+// function fetchData(studentId, callback) {
+//     const student = {
+//         id: studentId 
+//     };
+//     callback(student);
+// }
+
+// fetchData(1, function(student){
+//     console.log(student);
+// });
+
+// // 예상 결과
+// {id: 1}
+// 실제 결과 = {id: 1}
+
+
+// 비동기를 통해서 결과를 출력 --> 문제 발생
+// function fetchData(studentId) {
+//     let student;
+//     setTimeout(function() {
+//         student = {
+//             id: studentId 
+//         };
+//     }, 0);
+//     return student;
+// }
+
+// const student1 = fetchData(1);
+// console.log(student1);
+
+// 예상 결과
+// {id: 1}
+
+// 실제 결과
+// undefined
+
+// 문제 발생 원인
+// student 객체가 만들어 지는 로직이 비동기로 처리가 됨
+// student 객체가 만들어 지는 동안 return student가 실행됨
+// 따라서, 생성되지 않은 객체를 갖고 있는 student가 출력되었기 때문에
+// undefined가 출력됨!
+
+// 문제 어떻게 해결할 수 있을까? 
+// --> 콜백 함수로 처리 가능!!!
+function fetchData(studentId, callback) {
+    let student;
+    setTimeout(function() {
+        student = {
+            id: studentId 
+        };
+        callback(student);
+    }, 0);
+}
+
+fetchData(1, function(student) {
+    console.log(student);
+});
+
+// 예상 결과
+// {id: 1}
+
+
+    </script>
+</body>
+</html>

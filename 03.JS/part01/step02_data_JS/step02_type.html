@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step02_type.html</title>
+</head>
+<body>
+    <script>
+        // 1. Number
+        console.log(-10);
+        console.log(-10.25);
+        // js에서는 정수와 실수를 구분하지 않음
+
+        // 진수
+        // 2진수
+        let binaryNumber = 0b01000001;
+        console.log(binaryNumber);
+
+        // 8진수
+        let octalNumber = 0o101;
+        console.log(octalNumber)
+
+        let hexNumber = 0x41;
+        console.log(hexNumber);
+
+        // 실수로 통합 (===)
+        console.log(1 === 1.0);
+
+        // 추가
+        console.log(10/3);
+        console.log(10/0);  // Infinity
+        console.log('Ten'/3);
+
+        // String 
+        // ""  / ''
+        console.log("E");
+        console.log('e');
+
+        document.write('<a href="https://www.naver.com">네이버</a>');
+        
+        console.log("큰 따옴표 안에 '작은 따옴표'");
+        console.log('작은 따옴표 안에 "큰 따옴표"');
+        console.log("같은 따옴표는 \"역 슬래쉬~! \"를 포함해서 적어야 한다.");
+
+        console.log(`백틱으로
+        표현하기`)
+
+        let height = 180;
+        console.log("강사의 키는 :" + height + " 이다.");
+        console.log(`강사의 키는 : ${height} 이다`);
+
+        // Boolean
+        console.log(true);
+        console.log(false);
+        
+        // undefind / null
+        // undefind : 값이 할당 되지않은 상태
+        // null : 무의 형태
+
+        // Symbol : 변경 불가능한 원시 타입, 이름의 충돌이 없는 객체의 유일한 프로퍼티 키 생성시
+        let key = Symbol('key');
+        console.log(key);
+
+        let obj = {};
+        console.log(obj);
+
+        obj[key] = 'value'
+        console.log(obj);
+        console.log(obj[key]);
+
+        // Symbol은 유일한 값이다
+        let symbolA = Symbol('symbol');
+        console.log(symbolA);
+        let symbolB = Symbol('symbol');
+        console.log(symbolB);
+
+        console.log(symbolA === symbolB);
+    </script>
+</body>
+</html>

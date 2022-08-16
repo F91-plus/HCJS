@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step5_form_input.htmls</title>
+</head>
+<body>
+    <!-- input : tex,t passwd -->
+    <form action="">
+        ID : <input type="text">     <br/>
+        PW : <input type="password">
+    </form>
+    <hr>
+
+    <!-- input : radio (단일값) -->
+    <form action="">
+        <input type="radio" name="lan" id="M" value="M">M<br/>
+        <input type="radio" name="lan" id="F" value="F">F<br/>
+    </form>
+    <hr>
+
+    <!-- input : check (다중값) -->
+    <form action="">
+        <input type="checkbox" name="fruits" id="1" value="banana">바나나
+        <input type="checkbox" name="fruits" id="2" value="peach">복숭아
+        <input type="checkbox" name="fruits" id="3" value="strowberry">딸기
+    </form>
+    <hr>
+
+    <!-- select  -->
+    <select name="car" id="">
+        <option value="car0" selected>car0</option>
+        <option value="car1">car1</option>
+        <option value="car2">car2</option>
+        <option value="car3">car3</option>
+    </select>
+    <hr>
+
+    <!-- input : submit -->
+    <form action="https://www.google.com/search?" method="GET" target="_blank">
+        google : <input type="text" name="query">
+        <input type="hidden" name="data" value="1">
+        <input type="submit">
+    </form> <br><br>
+    <button>버튼-직접 맵핑</button>
+    <hr>
+
+    <!-- multimedia -->
+    <video src="/multimedia/TeachableMachine.mp4" controls width="450px" type="video/mp4"></video>
+    <hr>
+
+    <!-- iframe -->
+<iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="300"
+    height="200"
+    src="https://www.google.com">
+</iframe>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <style>
+        #section {
+            margin: 20px;
+            padding: 20px;
+            border: 3px solid black;
+        }
+        #link {
+            display: inline-block;
+            padding: 20px;
+            border: 3px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 이벤트 객체 -->
+    <button id="btn">버튼튼</button>
+
+    <hr>
+
+    <!-- 이벤트 흐름 -->
+    <div id="section">
+        <a href="https://www.naver.com" id="link">link</a>
+    </div>
+
+    <hr>
+
+    <ul id="menu">
+        <li id="li-1">1</li>
+        <li id="li-2">2</li>
+        <li id="li-3">3</li>
+        <li id="li-4">4</li>
+        <li id="li-5">5</li>
+    </ul>
+
+    <script>
+        // menu의 li 3번째 가져오기
+        // 방법 1
+        const lis = document.getElementsByTagName('li');
+        console.log(lis[2]);    // collection 으로 가져온다
+        // 방법 2
+        const li3 = document.getElementById('li-3');
+        // 문제발생 : 방법 1,2는 여러 li 있을 경우 겹친다.
+        // 방법3 
+        // menu.addEventListener('click', function(e) {
+        //     console.log(e.target);  // 이벤트를 가르킴
+        //     console.log(this);      // 자신을 가르킴
+        // });
+
+        // 방법 3-2
+        menu.addEventListener('click', (e) => {
+            console.log(e.target);  // 이벤트를 가르킴
+            console.log(this);      // window를 가르킴 (화살표함수)
+
+            // 화살표 함수
+            // 1. new 객체 생성 불가능함 : 생성자x
+            // 2.내부에서 this 라는 것은 기본적(객체자기자신)으로 활용 불가능
+        });
+
+        // 화살표 함수 관련
+        // 1. new 객체 생성되었다면 내부 this -> 객체 자기자신
+        // 2. 일반 함수에서 this 호출하게 되면 -> window
+        function Test() {
+            console.log(this);
+        }
+        let test = new Test();  // test {}
+        Test();                 // Window
+
+
+        // 흐름
+        // 버블링 예시 : 하위요소 실행시 상위요소까지 실행됨
+        const section = document.getElementById('section');
+        const link = document.getElementById('link');
+        
+        section.addEventListener('click', (e) => {
+            console.log(e.target);
+            e.currentTarget.style.background = 'gold';
+        });
+
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // 다른요소로 이벤트 전파 방지
+            console.log(e.target);
+            e.currentTarget.style.background = 'tomato';
+        })
+
+        // 이벤트 (event, e)    -event를 줄여서 e라고 표현
+        // DOM과 관련되어 발생한 이벤트 정보를 저장하는 객체
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', (e) => {
+            console.log('버튼튼작동');
+            console.log(e.type);    // e.type은 발생한 이벤트의 요소 (click)
+                                    // e만 출력하면 이벤트에대한 모든 정보가 나옴
+            console.log(e.currentTarget); // 현재 이벤트를 처리중인(활성화 되어있는) 요소
+            console.log(e.eventPhase);    // 1. 캡처링, 2. 타겟, 3.버블링 (phase)  // 2 로 나옴
+            console.log(e.defaultPrevented) // t 또는 f : 기본적인 이벤트의 실행여부 (ex) a->
+
+        });
+
+        // 이벤트 흐름
+        // https://www.w3.org/TR/DOM-Level-3-Events/images/eventflow.svg
+        // 1. Capture 캡처링    : 이벤트가 상위에서 하위로 전파
+        // 2. Target 타겟       : 이벤트가 실제 타겟 요소에 전파
+        // 3. Bubbling 버블링   : 이벤트가 하위에서 상위로 전파
+
+    </script>
+</body>
+</html>

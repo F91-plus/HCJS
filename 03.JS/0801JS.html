@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1번 문제 -->
+    <!-- 20, 30, X -->
+
+    <!-- 2번 문제 -->
+    <!-- c -->
+
+    <!-- 3번 문제 -->
+    <!-- 1.1 -->
+
+    <!-- 4번 문제 -->
+    <!-- 1번 15, 27 -->
+
+    <!-- 5번 문제 -->
+    <!-- 2번 4,10,16 -->
+
+    <!-- 6번 문제 -->
+    <script>
+        function getSum(x, y) {
+            let sum = x;
+            sum += y;
+            return sum;
+        }
+        let sum = 0;
+        let nums = [1,2,3,4,5,6,7,8,9,10]
+        for(let i=0; i<nums.length; i++) {
+            sum = getSum(sum, nums[i]);
+        }
+        console.log(sum);
+    </script>
+
+    <!-- 7번 문제 -->
+    <script>
+        let num1 = [1,2,3,4,5,6];
+        let num2 = [1,2,3,4,5,6];
+
+        for(let i=0; i<num1.length; i++) {
+            for(let j=0; j<num2.length; j++) {
+                if((num1[i] + num2[j]) == 6) {
+                    console.log(`${num1[i]}, ` + `${num2[j]}`);
+                }
+            }
+        }
+
+    
+    </script>
+</body>
+</html>

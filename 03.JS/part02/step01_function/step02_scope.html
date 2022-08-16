@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step02_scope.html</title>
+</head>
+<body>
+    <script>
+        //스코프 : 변수에 접근 할 수 있는 범위
+        // -종류 : 전역, 지역
+        // - 지역스코프 종류 : 함수(var), 블록(let, const)
+        
+        // var : 함수에서 선언한 변수는 함수 내에서 접근 가능
+        function varFunction() {
+            var x = 10;
+            console.log(x);
+        }
+        varFunction();
+        
+        if(true) {
+            var y = 20;
+            let a = 40;
+            console.log(y);
+        }
+        console.log(y);
+        // console.log(a); //error
+
+        // let, const : 블록내에서 선언한 변수는 해당 블록에서만 접근 가능
+        function keywordFunction() {
+            let z = 30;
+        }
+        // console.log(z); // error
+
+        function hello() {
+            for(var i=0; i<10; i++) {
+                
+            }
+            console.log(i);
+        }
+        hello();
+
+        //예시2 : 중첩 범위에 따른 접근을 생각 해봐야 한다.
+        // 호이스팅 : 코드에 선언된 변수를 상단으로 끌어 올리는 행위
+        console.log(age);   // ?! 초기화 전인데 에러가 아니고 undefined가 나타난다
+                            // 엔진에서 이미 변수가 있다고 인지하고 있다.
+                            // 하지만 let을 사용하면 에러가 발생한다.
+        var age = 24;
+        console.log(age);
+        console.log("---------");
+        function hoistringFunction() {
+            console.log(age);
+
+            var age = 24;
+
+            console.log(age);
+        }
+        hoistringFunction();
+
+
+        // 함수 호이스팅
+        printName();
+        // printName2();
+
+        // 함수 선언식 : 호이스팅 가능
+        function printName() {
+            let name = 'IT';
+            console.log(name);
+        }
+        // 함수 표현식 : 호이스팅 불가능 
+        var printName2 = function() {
+            let name = 'IT2';
+            console.log(name);
+        }
+        printName();
+        printName2();
+        console.log("=========")
+
+        // 예시3 : scope chain
+        var abc = "전역 변수 abc";
+        function outher() {
+            var xyz = "outer 지역변수 xyz";
+            console.log(abc);
+            console.log(xyz);
+
+            function inner () {
+                var abc = "inner 지역변수 abc";
+                console.log(abc);
+                console.log(xyz);
+            }
+            inner();
+        }
+        outher();
+        console.log(abc);
+        // console.log(xyz);
+
+    </script>
+</body>
+</html>

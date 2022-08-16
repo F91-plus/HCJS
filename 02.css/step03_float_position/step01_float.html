@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step01_float.html</title>
+    <style>
+        article {
+
+        }
+
+        article .picture {
+            width: 100px;
+            height: 100px;
+            background: navy;
+            float: left;
+            margin: 10px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: gold;
+            margin: 10px;
+            float: left;
+        }
+/* float 문제 해결 */
+/* 1. 부모와 자식 둘다 float 를 준다 단 float 사용안 그 외의 아이들은 터짐 */
+/* 2. overlow: hidden       옆에 속성 값이 ...?*/
+/* 3. display: inline-block 옆에 속성 값이 들어가면 어케될지 모름*/
+/* 4. ul::after             가상요소 사용 (현재 가장 많이 사용)*/
+/* 5. display: flow-root    4번 보다 좋지만 현재 모든 브라우저에 적용되지 않음 */
+
+        ul {
+            padding: 15px 20px;
+            background: red;
+            /* float: left; */
+            /* overflow: hidden; */
+            /* display: inline-block; */
+        }
+
+        /* 4. ul::after 가상요소 사용*/
+        ul::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        ul li {
+            background: aqua;
+            padding: 5px;
+            margin: 5px;
+            float: left;
+            list-style: none;
+        }
+
+    </style>
+</head>
+<!-- float : 요소를 좌우 방향으로 띄움(수평정렬) -->
+<body>
+    <div>
+    <article>
+        <div class="picture"></div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam at incidunt porro magni illum officia sit quod minus
+    </article>
+    </div>
+    <br><br><br><br>
+    <!-- 적용 -->
+    <div>
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- 문제 해결, 고양이 속성 -->
+    <ul>
+        <li>aaa1</li>
+        <li>aaa2</li>
+        <li>aaa3</li>
+        <li>aaa4</li>
+    </ul>
+</body>
+</html>

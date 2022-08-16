@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step05_display.html</title>
+    <style>
+        span {
+            width: 100px;
+            height: 100px;
+            background: gold;
+            display: inline-block;
+        }
+
+        input:nth-child(3) {
+            color: aqua;
+            display: none;
+        }
+
+        .photo {
+            text-align: center;
+        }
+        img {
+            /* vertical-align: middle; */
+            /* 블록은 마진으로 중간에 정렬한다. */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .link-icons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .link-icons a:not(:last-child) {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <span>Span</span>
+    <br><br><br>
+    <input type="text" value="1">
+    <input type="text" value="2">
+    <input type="text" value="3">
+    <br><br><br>
+    <div class="photo">
+        <img src="https://cdn-icons-png.flaticon.com/128/7577/7577239.png" alt="">
+    </div>
+    <br><br><br>
+    <div class="link-icons">
+        <a href="https://github.com/">
+            <img src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566899596/noticon/slhw4nu8hybreryigopq.png" 
+             alt="github" width="70px">
+        </a>
+        <a href="https://www.instagram.com/">
+            <img src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1567008788/noticon/bqjhb6xvljt9viccy6lh.png"
+             alt="instagram" width="70px">
+        </a>
+        <a href="https://ko-kr.facebook.com/login.php?next=https%3A%2F%2Fko-kr.facebook.com%2Fprivacy%2Fconsent%2Fpipa%2F%3Fparams%255Bpft_surface%255D%3Dfacebook_comet%26params%255Bis_new_user_blocking_flow%255D%3Dfalse%26params%255Bpft_session_key%255D%3D700e9142-c925-4a85-8552-8b8da5b8e834%26params%255Bis_existing_user_blocking_flow%255D%26source%3Dpipa_blocking_flow">
+            <img src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1567008602/noticon/ird3id54hstap8dtokdx.png"
+             alt="facebook" width="70px">
+        </a>
+    </div>
+</body>
+</html>

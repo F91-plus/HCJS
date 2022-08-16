@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class.html</title>
+</head>
+<body>
+    <script>
+/*
+        function Animal() {
+            this.name = name;
+            this.speed = speed;
+            run = function(speed) {
+                console.log(this.speed+"로 run() 실행");
+            }
+            stop = function(name) {
+                console.log(this.name+"이 멈춤 stop()");
+            }
+        }
+*/
+// 함수에서 클래스로 사용
+        class Animal {
+            // 생성자 : 객체 생성시, 프로퍼티 초기화
+            constructor(name) {
+                this.name = name;
+                this.speed = 0;
+            }
+            // 메소드
+            run(speed) {
+                console.log(this.speed+"로 run() 실행");
+            }
+            stop(name) {
+                console.log(this.name+"이 멈춤 stop()");
+            }
+        }
+        const animal = new Animal();
+
+        // extends
+        // 기존 클래스 활용해 내용 추가 및 변경해서 사용하는 키워드
+        // animal 에서 상속 받음
+        // 이것을 React에서 함수 props로 사용이 된다.
+        class Cat extends Animal{
+            sleep() {
+                console.log("12시간 이상 잠")
+            }
+        }
+        const cat = new Cat("ll");
+        console.log(cat);
+        cat.sleep();
+        cat.run();
+        cat.stop();
+        
+
+    </script>
+</body>
+</html>

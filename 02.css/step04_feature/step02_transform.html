@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step02_transform.html</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: tomato;
+
+            /* 내부의 화면을 flex로 만든다 */
+            /* 그 후 화면 설정 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            /* transform: rotate(-90deg); */
+
+            /* 이동 */
+            /* transform: translateX(100px, 0px); */
+            
+            transition: 1s;
+        }
+
+        .box:hover {
+            /* position: relative;
+            left: 30px;
+            top: 30px; */
+            
+            transform: translate(30px, 30px);
+            /* transform: scale(1.5); */
+            /* transform: skew(45deg); */
+        }
+
+        img {
+            width: 300px;
+            border: 3px solid aqua;
+            transform: perspective(300px) rotateX(45deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- transform : 요소의 변환 효과 지정 -->
+    <!-- transform : 변환함수 1, 2, 3, ... -->
+    <!-- transform : 원근법 이동 크기 회전 기울임 -->
+    <!-- 2D 변환 함수 -->
+    <div class="box">box</div>
+
+    <!-- 2D 변환 함수 -->
+    <!-- 이동 : translate(x, y), translateX(x), translateY(y) 이동(x축, y축) 단위 -->
+    <!-- 크기 : scale(x, y), scaleX(x), scaleY(y) 크기(x축, y축), 없음(배수) -->
+    <!-- 회전 : rotate(degree) 회전(각도), deg -->
+    <!-- 기울임 : skew(x-deg, y-deg), 기울임(x축, y축), deg -->
+    
+    <!-- transform 3D 변환 함수 -->
+    <!-- 이동 : translate3d(x,y,z), translateZ(z) -->
+    <!-- 크기 : scale3d(x,y,z) scaleZ(z) -->
+    <!-- 회전 : rotate3d(x,y,z,a(각도)), rotateX(x), ratateY, roatateZ -->
+    <!-- 원근법 : perspective(n) 원근법(거리) 단위 -->
+    
+    <img src="/img/main.webp" alt="img">
+</body>
+</html>

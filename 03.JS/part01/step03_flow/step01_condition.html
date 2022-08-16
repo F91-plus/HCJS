@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step03_condition.html</title>
+</head>
+<body>
+    <script>
+        // 조건문
+        // 조건을 만족할 때 실행하는 순서를 정하는 구문
+        // if, if~else
+        // random 분류(Math.random())
+        let randomNumber = Math.random();
+
+        // 0.5 이산인 경우인지 아닌지
+        if(Math.random() >= 0.5) {
+            console.log(`0.5 이상입니다. ${randomNumber} `);
+        } else {
+            console.log(`0.5 미만입니닫 ㅎㅎ.`);
+        }
+
+        // switch / case
+        let key = 0;
+        switch (key) {
+            case 0:
+                console.log("Sunday");
+                break;
+
+            default:
+                console.log("check pleas")
+                break
+        }
+
+        let serialNumber = `220801-20220211`;
+        let inputnumber = prompt();
+        switch (inputnumber) {
+        // switch (serialNumber.charAt(7)) {
+            case `1`, `3`:
+                console.log("남성");
+                break;
+            case `2`, `4`:
+                console.log("여성");
+                break;
+            default:
+                console.log("???");
+                break;
+        }
+        console.log(inputnumber);
+        console.log(typeof(inputnumber));
+
+        // let serialNumber2 = parseInt(prompt('입력'));
+    </script>
+</body>
+</html>

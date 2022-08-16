@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step02_position.html</title>
+    <style>
+        .parent {
+            width: 500px;
+            height: 400px;
+            border: 3px solid black;
+
+            /* absolute 실습 추가 */
+            /* 부모 요소가 static인경우에는 absolute가 부모 기준을 무시함 */
+            /* position: static; */
+            /* 부모 요소가 static이 아닌 경우 relative, fixed, ... 에는 absolute가 부모 기준으로 배치됨 */
+            /* position: relative */
+
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            border: 3px dashed gray;
+            background: red;
+        }
+
+        /* relative */
+        .box {
+            width: 100px;
+            height: 100px;
+            background: greenyellow;
+            border: 3px dashed gray;
+            padding: 20px;
+        }
+        .relative {
+            position: relative;
+            left: 300px;
+        }
+
+        /* absolute */
+        .absolute {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+        }
+
+        /* fixed */
+        .fixed {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+        }
+
+        body {
+            height: 2000px;
+        }
+
+        /* sticky */
+        .section {
+            height: 300px;
+            border: 3px solid navy;
+        }
+
+        .section h1{
+            text-align: center;
+            position: sticky;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- position: 요소의 위치 지정의 기준 설정 -->
+
+    <!-- static: 기준 없음 / 배치 불가능(기본값) -->
+    <!-- <div class="parent">
+        <div class="child"></div>
+    </div> -->
+
+    <!-- relative: 요소 자기 자신 기준 -->
+    <!-- <div class="box">1</div>
+    <div class="box relative">2</div>
+    <div class="box">3</div> -->
+
+    <!-- absolute : (위치상) 부모 요소를 기준, 단 static은 제외 -->
+    <div class="parent">
+        <div class="box">1</div>
+        <div class="box absolute">2</div>
+        <div class="box fixed">3</div>
+    </div>
+
+    <!-- stiky : 스크롤 영역 기준, top 등의 값이 1개 이상 존재 및 스크롤과 맞닿았을때 동작 -->
+    <div class="container">
+        <div class="section">
+            <h1>Title1</h1>
+        </div>
+        <div class="section">
+            <h1>Title2</h1>
+        </div>
+        <div class="section">
+            <h1>Title3</h1>
+        </div>
+        <div class="section">
+            <h1>Title4</h1>
+        </div>
+        <div class="section">
+            <h1>Title5</h1>
+        </div>
+        <div class="section">
+            <h1>Title6</h1>
+        </div>
+    </div>
+
+</body>
+</html>

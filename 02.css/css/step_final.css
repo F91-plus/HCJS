@@ -1,0 +1,33 @@
+#top_title {
+    text-align: center;
+    margin: 100px;
+}
+
+#nav {
+    text-align: center;
+    margin-top: 60px;
+	margin-bottom: 60px;  
+    border-right: 2px solid black;  
+}
+
+.nav-bar{
+    list-style: none;
+}
+
+ul li{
+    border-right: 2px solid black;  
+}
+
+.nav-bar li:nth-child(4) {
+    border-right: none;
+}
+
+a {
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+
+#section {
+    text-align: center;
+}

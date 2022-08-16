@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step02-2_position.html</title>
+    <style>
+        .container {
+            width: 300px;
+            height: 400px;
+            background: aqua;
+            text-align: center;
+        }
+
+        .info {
+            background: tomato;
+            /* 포함하는 내용까지만 공간 설정 */
+            display: inline-block;  
+            vertical-align: middle;
+            /* 문제 발생 */
+            width: 100%;
+
+            margin-left: -6px;
+            line-height: normal;
+        }
+
+        .vertical-center {
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+
+            /* width: 5px;
+            background: red; */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 수평 중간 정렬(가로 정렬) -->
+    <!-- inline -->
+    <p>
+        <h2>inline</h2>
+        text-align: center
+    </p>
+    <p>
+        <h2>block</h2>
+        margin: 0 auto;
+    </p>
+
+    <!-- 수직 정렬(세로 정렬) -->
+    <div class="container">
+        <div class="vertical-center"></div>
+        <div class="info">
+            <h2>Name</h2>
+            <p>Fullstack</p>
+        </div>
+    </div>
+
+</body>
+</html>

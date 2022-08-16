@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step04_border.html</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 300px;
+            border-width: 20px;
+            border-color: red;
+            border-style: inset;
+            /* border: 20px inset red; */
+            box-sizing: border-box;
+            margin: 20px;
+            border-radius: 20px;
+        }
+
+        .radius {
+            border-radius: 20%;
+        }
+
+        .radius2 {
+            border-radius: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box radius" ></div>
+    <div class="box radius2"></div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step01_intro.html</title>
+    <style>
+        div {
+            background: darkblue;
+            color: white;
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- JS로 HTML style 변경 -->
+    <section>
+        <div id="style">
+            style
+        </div>
+        <button onclick="document.getElementById('style').style.visibility='hidden'">숨</button>
+        <button onclick="document.getElementById('style').style.visibility='visible'">셔</button>
+    </section>
+
+    <!-- 기본 문법 -->
+    <section>
+        <script>
+            let x = 10;
+            var y = 'var를 사용';
+            console.log(x);
+            console.log(y);
+
+            //식별자 : 영문자(대소문자), 숫자, _(언더스코어), $(달러) 사용 가능
+            // 숫자로는 시작 할 수 없다.
+            let itStudy = 1; //카멜 케이스 (default)
+            let ItStudy = 1; //파스칼 케이스
+            
+        </script>
+    </section>
+</body>
+</html>

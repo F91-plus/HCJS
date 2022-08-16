@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apply.html</title>
+</head>
+<body>
+    <!-- dog-api 실습 -->
+    <button id="fetch-dog-api">Fetch</button>
+    <div id="show-dog-img"></div>
+
+
+    <script>
+        const fetchBtn = document.getElementById('fetch-dog-api');
+        fetchBtn.addEventListener('click', () => {
+            fetch("https://dog.ceo/api/breeds/image/random")
+                .then((response) => response.json())
+                // .then((data) => console.log(data))
+                .then((data) => {
+                    // 1. createElement
+                    const dogImg = document.createElement('img');
+                    console.log(dogImg);
+                    dogImg.src = data.message;
+                    console.log(dogImg);
+                    dogImg.style.width = '150px';
+                    dogImg.style.height = '100px';
+
+                    // 2. #show-dog-img.appendChild(만든 이미지 태그 객체명)
+                    document.getElementById('show-dog-img').appendChild(dogImg);
+                    
+                });
+        });
+        
+    </script>
+</body>
+</html>

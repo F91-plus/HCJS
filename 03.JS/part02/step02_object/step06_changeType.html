@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step06_changeType.html</title>
+</head>
+<body>
+    <script>
+        // 타입 변환
+        // 명시적 vs 암묵적
+        
+        let x = 10;
+        console.log(x); // number 10
+        let y = x + '';
+        console.log(y); // string 10
+
+        let z = x.toString();
+        console.log(z); // string 10
+
+        // 암묵적
+        // 1. 문자열 타입으로 변환
+        //  1) 숫자 -> 문자열
+        console.log(-120 + ''); // string
+        console.log(NaN + '');  // string
+
+        //  2) 객체 -> 문자열
+        console.log({} + '');   // string
+        console.log([] + '');   // string
+        console.log((function() {}) + '');  // string
+
+        //  3) true/false
+        console.log(true+'');   // string
+
+        // 2. 숫자 타입으로 변환
+        //  1) 문자열 -> 숫자
+        console.log(+'');   // number   공백없이 붙이면
+        console.log(+'1');
+        console.log(+'2');
+        //  2) null & undefined -> 숫자
+        console.log(+null); // 0
+        console.log(+undefined);    // NaN
+        //  3) 객체 -> 숫자
+        console.log(+{});   // NaN
+        console.log(+{name:'it'}); // NaN
+        console.log(+[]);    // 0
+        console.log(+[1, 2]);   // NaN
+
+        console.log(+false);    // 0
+
+        // '', null, [], false => 0으로 바뀜
+        // undefined, {}, [not empty], => NaN
+
+        // 3. Boolean 타입으로 변환
+        if('') console.log('공백'); // false
+        if(0) console.log('true');  // 0 false
+        if(1) console.log('true');  // 1 true
+        if(null) console.log('null');   // null : false
+        if(undefined) console.log('undefined'); // undefined : false
+        if(NaN) console.log('NaN'); // NaN : false
+
+        // 거짓 판별 : 공백, 0 , null, undefined, NaN 만 false 로 판별한다.
+        // 명시적 : string, number, boolean
+
+        // 단축 평가
+        'Book' && 'Movie'
+        console.log('Book' && 'Movie'); // movie
+        console.log('Book' || 'Movie'); // book
+
+        // 단축 평가 결과
+        // ture && value --> value
+        // ture || value --> true
+        // false && value --> false
+        // flase || value --> value
+        // true > value > false  ??
+
+        // 조건문을 대신해서 사용이 가능하다
+        let isLogin = true;
+        let viewMessage = "";
+        
+        if(isLogin) {
+            viewMessage = "어서오세요";
+        } // =>
+        viewMessage = isLogin && "이렇게 사용하네...";
+
+        if(!isLogin) {
+            viewMessage = "로그인 실패";
+        } // =>
+        viewMessage = isLogin || "로그인 실패";
+
+    </script>
+</body>
+</html>

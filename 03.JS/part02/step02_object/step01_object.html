@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step01_object.html</title>
+</head>
+<body>
+    <script>
+        // 객체 : 키-값 으로 구성된 프로퍼티의 집합
+        // - 구성요소 : 프로퍼티키 : 프로퍼티값 
+        // - 종류 : JS 내에서 기본타입(원시타입)을 제외한 모든 것은 객체, 배열, document, ..., {}
+
+        // 객체 리터럴 : {}
+        let obj1 = {name : "tt", age:24};
+        console.log(obj1);
+        console.log(obj1.name);
+
+        let obj2 = {};
+        console.log(obj2);
+        obj2.name = "it2";
+
+        console.log(obj2);
+
+        obj2.name = "itaa";
+        console.log(obj2);
+
+        obj2.name2 = "ityyh";
+        console.log(obj2);
+        // 프로퍼티 키는 변경되지 않는다.
+
+        console.log("==========");
+
+        //typeof()
+        console.log(typeof(obj1));
+        console.log(typeof(obj2));
+        // valueOf()
+        console.log(obj1);
+        console.log(obj1.valueOf());
+
+        console.log("==========");
+
+        // step02 객체 생성자
+        let obj3 = new Object();
+        console.log(obj3);
+        obj3.name = "it";
+        console.log(obj3);
+
+        console.log("==========");
+
+        // step03 (사용자 정의) 생성자 함수
+        // 생성자 함수는 대문자로 시작한다, 생성자 함수임을 인식하도록 지정
+        function Cumtomer() {
+            console.log(this);
+            // this : 함수 내부에서는 객체 자기 자신을 의미한다.
+        }
+
+        let obj4 = new Cumtomer();
+
+/*
+        let car = {
+            brand:"it",
+            color: "gold",
+            price: 20000,
+            option: "full"
+        }
+*/
+        function Car(color) {
+            this.brand = "it";
+            // this.color = "gold";
+            this.color = color;
+            this.price = 20000;
+            // 프로퍼티키 : 문자열, 심볼
+            // 프로퍼티값 : 모든 값
+            this.option = "full";
+            // 함수는 this 를 써주지 않으면 객체로 인식으 하지 못한다.
+
+            // 객체 내부의 함수 = 메소드
+            this.turnOn = function() {
+                console.log("시동!");
+            }
+        }
+        let car = new Car();
+        console.log(car);
+        car.turnOn();
+
+        console.log("--------");
+
+        let myCar = new Car("red");
+        let yourCar = new Car("blue");
+
+        console.log(myCar);
+        console.log(yourCar);
+
+        // 생성자 함수를 활용하여 Student 객체를 생성한다
+        // 이때, 내부 property로는 이름, 학년, ID 값이 존재
+        // 기능으로 이름과 학년, ID를 모두 반환하는 printInfo 메소드 존재
+        // 주어진 조건을 활용해 Student 객체를 만들어 주세요
+        // Student(name, grade, ID) - 외부 입력, 3가지 모두 받기
+
+        function Student(name, grade, id) {
+            this.name = name;
+            this.grade = grade;
+            this.id = id;
+
+            // getXXX : getName
+            this.printName = function() {
+                return this.name;
+            }
+            this.printInfo = function() {
+                return `이름 : ${name}, 학년 : ${grade}, id : ${id}`;
+            }
+            // setXXX : setGrade
+            this.changeGrade = function(grade) {
+                this.grade = grade;
+                return grade;
+            }
+        }
+        let student = new Student("son", "4", "2017");
+        console.log(student);
+        console.log(student.printInfo());
+        console.log(student.grade);
+
+        student.changeGrade(9);
+        console.log(student);
+
+        student.age = 24;
+        console.log(student);
+
+        console.log("=============")
+
+        // for ~ in : 객체의 프로퍼티키를 출력(기본)
+        for(let data in student) {
+            // console.log(data);
+            // 객체의 키를 이용하여 값을 출력하세요.
+            console.log(`key : ${data} value : ${student[data]}`)
+        }
+
+        // for of 는 불가능함
+        //iterable 오류 = mozilla 검색
+
+        //C- create, R - read, U - update, D - Delete
+        // 프로퍼티(객체 리터럴) 삭제
+        let Cat = {
+            name: "cup",
+            age: 3,
+            weight: 8
+        }
+        console.log(Cat);
+        delete Car.weight;
+        console.log(Cat);
+
+        // 함수형태로 객체를 생성하는데 화살표 문법으로도 생성가능한가?
+        let Cat2 = (name, age, wiehgt) => {
+            this.name = name;
+            this.age = age;
+            this.weight = weight;
+        }
+        // 오류... 22/08/03일에 설명 및 해결
+        // let curbe = new Cat2("crube", 3, 7)
+        
+        const bank = {
+            // loan: function() {
+            //     console.log("대출 서비스");
+            // }
+
+            // 화살표 함수
+            loan : () => {
+                console.log("대출 서비스");
+            }
+        }
+        bank.loan();
+
+        console.log("----------------------------")
+
+        //객체 보호
+        const person = {name: "it"}
+
+        // 1. 확장
+        // isExtensible : 객체가 확장이 가능한지를 검증
+        console.log(Object.isExtensible(person)); // true
+        // 객체 확장
+        person.age = 24;
+
+        // : 객체의 확장을 막기
+        Object.preventExtensions(person);
+        person.id = "z-1234";
+
+        console.log(person);
+
+        // 2. 밀봉
+        // isSealed : 객체가 밀봉되어있는지를 확인
+        console.log("밀봉===================")
+        console.log(Object.isSealed(person)); //false
+
+        person.age = 25;
+        console.log(person);
+
+        // seal : 객체 밀봉(수정은 가능, 프로퍼티 추가/삭제 불가능)
+        Object.seal(person);
+
+        person.id = "x-1234";
+        delete person.name;
+        console.log(person);
+
+        // 3. 동결
+        // isFrozen : 동결 여부 확인
+        console.log("동결===================")
+        console.log(Object.isFrozen(person)); // false
+
+        // freeze : 객체 동결 (프로퍼티 수정/추가/삭제 불가)
+        Object.freeze(person);
+
+        person.age = 26;
+        console.log(person);
+    </script>
+</body>
+</html>

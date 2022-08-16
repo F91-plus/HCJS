@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* p {
+            color: red;
+            text-align: center;
+        } */
+
+        /* #p1 {
+            color: blue;
+        } */
+
+        /* .font40 {
+            font-size: 40px;
+        } */
+
+        /* .font50 {
+            font-size: 50px;
+        } */
+
+        /* .right {
+            text-align: right;
+        } */
+
+        /* h3, h4 {
+            color: greenyellow;
+        } */
+
+        /* 복합선택자 */
+        li.berry {
+            color: red;
+        }
+
+        /* 하위선택자 */
+        .fruits li {
+            color: blue;
+        }
+
+        /* 인접 형제선택자  = li의 수박에 해당*/
+        .berry + li {
+            color: gold;
+        }
+        /* 일반 형제 선택자 */
+        .berry ~ li {
+            color: green;
+        }
+
+        /* 가상 클래스 */
+        /* 방문했을 때 */
+        a:visited {
+            background-color: cyan;
+        }
+        /* 마우스를 올렸을 때 */
+        a:hover {
+            background-color: hotpink;
+        }
+        a:active {
+            background-color: greenyellow;
+        }
+        
+        /* 텍스트 입력 상태 */
+        input:focus {
+            background-color: gold;
+        }
+
+        /* first/last-child */
+        .fruits li:first-child {
+            color: red;
+        }
+        /* nth-child() */
+        .fruits li:nth-child(4) {
+            color: yellow;
+        }
+
+        .fruits p:last-child {
+            color: red;
+        }
+
+        .fruits p:nth-of-type(1) {
+            color: red;
+        }
+
+        /* nth-of-type 태그만 지정 가능하다 */
+        /* .fruits .berry:nth-of-type(1) {
+            color: red;
+        } */
+
+        /* not */
+        .fruits li:not(.berry) {
+            color: black;
+        }
+
+        /* 가상 요소 선택자 :: */
+        .before li::before {
+            content: "가상요소";
+            color: blue;
+        }
+
+        /* 속성 선택자 [] */
+        [class^="btn-"] {
+            font-weight: bold;
+            border-radius: 20px;
+        }
+        [class$="success"] {
+            color: green;
+        }
+        [class$="danger"] {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Selector</h1>
+    <h2>1. 태그 선택자</h2>
+    <p>모든 p태그에 스타일이 적용됩니다.</p>
+    <p>여기!</p>
+    <p>그리고 여기!</p>
+
+    <hr>
+
+    <h2>2. 아이디 선택자</h2>
+    <p id="p1">아이디 지정된 것만 영향을 받습니다.</p>
+    <p>이 단락은 아이디 선택자의 영향을 받지 않습니다</p id="p1">
+
+    <hr>
+
+    <h2>3. 클래스 선택자</h2>
+    <p>클래스는 여러 요소를 대상으로, 여러 종류를 적용할 수 있습니다.</p>
+    <p class="font40">40px 크기의 텍스트</p>
+    <p class="font40 font50 right">40px 크기의 텍스트와 오른쪽 정렬</p>
+    <p class="font50 right">50px 크기의 텍스트와 오른쪽 정렬</p>
+    <!-- class는 스타일 시트 상 위에 있을 수록 먼저 적용 (최종적으로는 맨 아래쪽으로 덮임) -->
+
+    <hr>
+
+    <h2>4. 그룹 선택자</h2>
+    <h3>그룹 선택자는 여러 요소를</h3>
+    <h4>한 번에 선택할 수 있습니다</h4>
+
+    <hr>
+
+    <div>
+        <ul class="fruits">
+            <li>사과</li>
+            <li class="berry">딸기</li>
+            <li>수박</li>
+            <li>바나나</li>
+            <p>수박</p>
+        </ul>
+    </div>
+    <div>당근</div>
+    <div>포토</div>
+    <span>수박</span>
+
+    <hr>
+
+    <!-- emmet 단축 기능 -->
+    <!-- 자식 노드 생성 : a>b -->
+    <!-- div>ul>li -->
+    <div>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+    <!-- 형제 노드 생성 : a+b -->
+    <!-- div+p+span -->
+    <div></div>
+    <p></p>
+    <span></span>
+    <!-- 횟수만큼 반복 : a*10 -->
+    <!-- li*3 -->
+    <li></li>
+    <li></li>
+    <li></li>
+    <!-- div>dl>(dt+dd)*3 -->
+    <div>
+        <dl>
+            <dt></dt>
+            <dd></dd>
+            <dt></dt>
+            <dd></dd>
+            <dt></dt>
+            <dd></dd>
+        </dl>
+    </div>
+    <!-- id, class 속성 적용 -->
+    <!-- div#header>div.nav -->
+    <div id="header">
+        <div class="nav"></div>
+    </div>
+    <!-- 넘버링 : $ -->
+    <!-- ul>li.item$*5 -->
+    <!-- ul>li.item$$*5  01 02...-->
+    <ul>
+        <li class="item1"></li>
+        <li class="item2"></li>
+        <li class="item3"></li>
+        <li class="item4"></li>
+        <li class="item5"></li>
+    </ul>
+    <!-- 텍스트 : {} -->
+    <!-- a[href="www.nave.com"]{네이버} -->
+    <a href="www.nave.com">네이버</a>
+    <li>리스트</li>
+    <!-- li{리스트$}*5 -->
+    <li>리스트1</li>
+    <li>리스트2</li>
+    <li>리스트3</li>
+    <li>리스트4</li>
+    <li>리스트5</li>
+
+    <hr>
+
+    <a href="http://www.naver.com">링크입니다.</a>
+    <input type="text" placeholder="입력 하시오">
+    
+    <hr>
+
+    <!-- 가상 요소 선택자 -->
+    <ul class="before">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+
+    <hr>
+
+    <!-- 속성 선택자 -->
+    <button class="btn-success">성공</button>
+    <button class="btn-danger">위험</button>
+    <button class="nomal">평범</button>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <h1 id="title1" class="font30">w1</h1>
+    <h1 id="title2" class="font30">w2</h1>
+    <h1 id="title3" class="font30">w3</h1>
+    <div id="aTag"></div>
+
+    <!-- 노드 -->
+    <div id="dom">
+        <h1>Plus-Minus</h1>
+        <div id="result">0</div>
+        <button id="btn-plus" class="btn">+1</button>
+        <button id="btn-minus" class="btn">-1</button>
+    </div>
+
+    <script>
+        // btn클래스 들이 눌러지면? plus는 1증가, minus는 1감소
+        // 결과는 result에 표시 
+        const btn_plus = document.querySelector('#btn-plus');
+        const btn_minus = document.querySelector('#btn-minus');
+        const result_val = document.getElementById('result');
+
+        btn_plus.addEventListener('click', () => {
+            // console.log("+1");
+            // console.log(typeof(result_val)); //object
+            result_val.innerHTML = parseInt(result_val.innerHTML)+1;
+        })
+        btn_minus.addEventListener('click', () => {
+            // console.log("-1");
+            result_val.innerHTML = parseInt(result_val.innerHTML)-1;
+        })
+
+
+
+        // DOM : documnet object model
+        // HTML 문서의 모든 요소를 객체로 만들어 사용하도록 여러 기능을 제공하는 모델
+        
+        // document 객체
+        // id 하나 선택해서 색상을 gold로 변경
+        const title1 = document.getElementById('title1');
+        title1.style.color = "gold";
+
+        // tag를 선택해서 w3의 색상을 tomato 로 변경
+        const titles = document.getElementsByTagName('h1');
+        titles[2].style.color = "tomato";
+        // getElementsByTagName, Id, class 는 배열로 들고온다.
+
+        // font30
+        const fonts = document.getElementsByClassName('font30');
+        fonts[0].style.fontSize ='120px';
+
+        // document.querySelector('#');
+
+        // 요소(element) 생성/추가/삭제/...
+        const aTag = document.getElementById('aTag');
+        aTag.innerHTML = '<a href="#">링크</a>'
+        // innerText는 보안에 취약하기 때문에 일반 text를 출력할 때에도 innerHTML으로 사용한다.
+
+        // createElemnet : 요소를 생성
+        const h3 = document.createElement('h3');
+        h3.innerHTML = 'createElement h3';
+        document.body.appendChild(h3);
+
+        // 속성(Attribute)
+        // set 추가 = h3에 data-id="test" 라는 속성을 추가
+        h3.setAttribute('data-id', "test");
+        // get, has
+
+        // 텍스트
+        // 프로퍼티 = innerHTML, innerText, textContent
+        // h3.textContent = "textContent"; //createElement h3 에서 textContent로 바뀐다.
+
+        // Child
+        // appendChild(추가) / remove(삭제)
+        // h3.replaceChild(para1, para2) : para2를 para1로 변경
+
+        // Node
+        // DOM 표준에 나와있는 HTML의 모든 요소
+        // 1. 문서노드 : document
+        // 2. 요소노드 : HTML 태그 각각의 요소
+        // 3. 텍스트노드 : HTML 요소 내부의 텍스트
+        // 4. 속성노드 : HTML 속성
+        // 5. 주석노드 : 주석
+        // 6. 루트노드 : HTML 태그
+
+        // 노드는 관계를 가진다
+        // 1. 부모 / 조상(상위) : parent
+        // 2. 자식 / 후손(하위) : first / last
+        // 3. 형제 / 자매
+
+        // console.log(document.childNodes);    // 현재 child 노드가 2개있으므로
+        // console.log(document.childNodes[1]);    // HTML의 것만 선택
+        // 중간에 빈 공백 혹은 줄바꿈은 textNode로 간주
+        console.log(document.childNodes[1].childNodes); // head, text, body
+
+        const result = document.getElementById('result');
+        console.log(result.previousSibling);    // result 이전 선택 (줄바꿈, 공백은 #text 친다.)
+        console.log(result.nextSibling);    // result 이후 선택
+
+        // 내가 HTML 요소를 선택했는지, Node 접근했는지
+        // 지정 방법에 따라 사용가능한 메소드가 달라진다.
+
+
+    </script>
+</body>
+</html>
